@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coscharis Motors</title>
+    <meta name="description" content="Drive Excellence. Experience the Best. Nigeria's premier automotive dealership.">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .motors-hero {
+            position: relative;
+            height: 80vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            background-size: cover;
+            background-position: center;
+        }
+        .motors-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
+        }
+        
+        .motors-stats-ribbon {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 30px 0;
+        }
+        .motors-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+        .motors-stat i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .motors-stat p {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .brands-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+        .brands-section h5 {
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: inline-block;
+            position: relative;
+        }
+        .brands-section h5::before, .brands-section h5::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 1px;
+            background-color: var(--primary-color);
+        }
+        .brands-section h5::before { right: 100%; margin-right: 15px; }
+        .brands-section h5::after { left: 100%; margin-left: 15px; }
+        .brands-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--bg-dark);
+        }
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .brand-card {
+            background-color: var(--bg-dark);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            color: var(--white);
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .brand-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.7) 100%);
+            z-index: 1;
+        }
+        .brand-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        .brand-logo {
+            position: relative;
+            z-index: 2;
+            padding: 30px;
+            text-align: center;
+        }
+        .brand-logo i { font-size: 3rem; margin-bottom: 10px; }
+        .brand-name {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        
+        .about-motors {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+            align-items: center;
+            padding: 80px 0;
+        }
+        .about-motors-text h5 {
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        .about-motors-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--bg-dark);
+            line-height: 1.2;
+        }
+        .about-motors-text p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        .about-motors-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        .about-motors-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 10px;
+            color: var(--bg-dark);
+            font-weight: 500;
+        }
+        .about-motors-list li::before {
+            content: '\f058';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--primary-color);
+        }
+        .about-motors-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .services-section {
+            background-color: var(--bg-dark);
+            color: var(--white);
+            padding: 80px 0;
+        }
+        .services-section h5 {
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: inline-block;
+            position: relative;
+            text-align: center;
+        }
+        .services-section h5::before, .services-section h5::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 1px;
+            background-color: var(--primary-color);
+        }
+        .services-section h5::before { right: 100%; margin-right: 15px; }
+        .services-section h5::after { left: 100%; margin-left: 15px; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+        }
+        .service-card {
+            background-color: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        .service-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        .service-info {
+            padding: 0 15px;
+        }
+        .service-info h3 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        .service-info p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 20px;
+        }
+        .service-arrow {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 0.8rem;
+        }
+
+        .help-banner {
+            background-color: var(--bg-light);
+            padding: 60px 0;
+        }
+        .help-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .help-contact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .help-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .help-item i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-top: 5px;
+        }
+        .help-item h4 {
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+            color: var(--bg-dark);
+        }
+        .help-item p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .partnerships {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid #eaeaea;
+        }
+        .partnerships h4 {
+            color: var(--bg-dark);
+            margin-bottom: 30px;
+        }
+        .partner-logos {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            align-items: center;
+            font-size: 3rem;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-links">
+                <a href="#">...Value for Money</a>
+            </div>
+            <div class="top-bar-links">
+                <a href="#">Media Centre</a> |
+                <a href="#">Investor Relations</a> |
+                <a href="#">Careers</a> |
+                <a href="#">Contact Us</a>
+                <div class="social-icons" style="display:inline-flex; align-items:center; margin-left: 10px;">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo-placeholder.png" alt="Coscharis Group" style="width: 40px; height: 40px; background: #e32636; border-radius: 50%;" onerror="this.style.display='none'">
+                <span class="logo-text">COSCHARIS GROUP</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us <i class="fas fa-chevron-down" style="font-size:0.7rem;"></i></a>
+                <a href="companies.html">Our Companies <i class="fas fa-chevron-down" style="font-size:0.7rem;"></i></a>
+                <a href="motors.html" class="active" style="color: var(--bg-dark); border-bottom: 2px solid var(--primary-color);">Coscharis Motors</a>
+                <a href="#">Sustainability</a>
+                <a href="#">News & Insights <i class="fas fa-chevron-down" style="font-size:0.7rem;"></i></a>
+            </nav>
+            <div class="nav-actions">
+                <i class="fas fa-search search-icon"></i>
+                <a href="#" class="btn btn-primary">Contact Us <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="motors-hero" style="background-image: url('../../.gemini/antigravity-ide/brain/839c7b08-da52-47f2-8ab0-a9095f960f6a/hero_cars_1780299732370.png');">
+        <div class="container">
+            <div class="hero-content">
+                <h5 style="color: var(--primary-color); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Coscharis Motors Plc</h5>
+                <h1 class="hero-title">Drive Excellence.<br>Experience <span style="color: var(--primary-color);">the Best.</span></h1>
+                <p class="hero-subtitle">Nigeria's premier automotive dealership representing world-class brands. Luxury. Performance. Reliability.<br><strong>All under one roof.</strong></p>
+                <div style="display: flex; gap: 15px; margin-top: 30px;">
+                    <a href="#" class="btn btn-primary">Explore Our Brands <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="btn btn-outline">Book a Test Drive <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Ribbon -->
+    <div class="motors-stats-ribbon">
+        <div class="container">
+            <div class="motors-stats-grid">
+                <div class="motors-stat">
+                    <i class="fas fa-car-side"></i>
+                    <p>7<br>World-Class<br>Brands</p>
+                </div>
+                <div class="motors-stat">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Nationwide<br>Dealerships</p>
+                </div>
+                <div class="motors-stat">
+                    <i class="far fa-building"></i>
+                    <p>State-of-the-Art<br>Showrooms</p>
+                </div>
+                <div class="motors-stat">
+                    <i class="fas fa-tools"></i>
+                    <p>Premium Aftersales<br>& Services</p>
+                </div>
+                <div class="motors-stat">
+                    <i class="fas fa-cogs"></i>
+                    <p>Genuine Parts<br>& Accessories</p>
+                </div>
+                <div class="motors-stat">
+                    <i class="fas fa-users"></i>
+                    <p>Dedicated to<br>Customer Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Brands Section -->
+    <section class="brands-section container">
+        <h5>Our Brands</h5>
+        <h2>A legacy of world-class brands</h2>
+        
+        <div class="brands-grid">
+            <div class="brand-card">
+                <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=500&q=80" class="brand-bg" alt="BMW">
+                <div class="brand-logo"><i class="fas fa-car"></i></div>
+                <div class="brand-name">BMW</div>
+            </div>
+            <div class="brand-card">
+                <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?w=500&q=80" class="brand-bg" alt="Land Rover">
+                <div class="brand-logo"><i class="fas fa-car-side"></i></div>
+                <div class="brand-name">LAND ROVER</div>
+            </div>
+            <div class="brand-card">
+                <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=500&q=80" class="brand-bg" alt="Geely">
+                <div class="brand-logo"><i class="fas fa-car-alt"></i></div>
+                <div class="brand-name">GEELY</div>
+            </div>
+            <div class="brand-card">
+                <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=500&q=80" class="brand-bg" alt="INEOS">
+                <div class="brand-logo"><i class="fas fa-truck-pickup"></i></div>
+                <div class="brand-name">INEOS</div>
+            </div>
+            <div class="brand-card">
+                <img src="https://images.unsplash.com/photo-1551830820-330a71b99659?w=500&q=80" class="brand-bg" alt="Ford">
+                <div class="brand-logo"><i class="fab fa-foursquare"></i></div>
+                <div class="brand-name">FORD</div>
+            </div>
+            <div class="brand-card">
+                <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=500&q=80" class="brand-bg" alt="Renault">
+                <div class="brand-logo"><i class="fas fa-car"></i></div>
+                <div class="brand-name">RENAULT</div>
+            </div>
+        </div>
+        <a href="#" class="btn" style="background: var(--white); color: var(--bg-dark); box-shadow: var(--shadow-sm); padding: 15px 30px; border-radius: 30px; font-weight: 600;">View All Brands <i class="fas fa-arrow-right" style="color: var(--primary-color); margin-left: 10px;"></i></a>
+    </section>
+
+    <!-- About Motors -->
+    <section class="section bg-light">
+        <div class="container about-motors">
+            <div class="about-motors-text">
+                <h5>About Coscharis Motors</h5>
+                <h2>More than cars.<br>A commitment to excellence<span style="color: var(--primary-color);">.</span></h2>
+                <p>Since 1977, Coscharis Motors PLC has been Nigeria's trusted partner in mobility. We represent five luxury and two value brands, delivering vehicles that inspire confidence and exceed expectations.</p>
+                <ul class="about-motors-list">
+                    <li>Ultra-modern showrooms across Nigeria</li>
+                    <li>State-of-the-art aftersales facilities</li>
+                    <li>Specialised & factory-trained technicians</li>
+                    <li>Genuine parts, accessories & lifestyle solutions</li>
+                    <li>Nationwide presence. Local expertise.</li>
+                </ul>
+                <a href="#" class="btn btn-outline" style="border-color: var(--primary-color); color: var(--primary-color);">Our Network <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1562141961-b5d189fa4dd8?w=800&q=80" alt="Showroom" class="about-motors-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Explore Services -->
+    <section class="services-section">
+        <div class="container" style="text-align: center;">
+            <h5>Explore Our Services</h5>
+            <h2 style="font-size: 2.5rem; margin-bottom: 50px;">Everything you need. All in one place<span style="color: var(--primary-color);">.</span></h2>
+            
+            <div class="services-grid" style="text-align: left;">
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=300&q=80" class="service-img" alt="New Car Sales">
+                    <div class="service-info">
+                        <h3>New Car Sales</h3>
+                        <p>Premium brands. Exceptional choices.</p>
+                    </div>
+                    <div class="service-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1503375811081-0677465cebe1?w=300&q=80" class="service-img" alt="Test Drive">
+                    <div class="service-info">
+                        <h3>Test Drive</h3>
+                        <p>Experience performance firsthand.</p>
+                    </div>
+                    <div class="service-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1504222490345-c075b6008014?w=300&q=80" class="service-img" alt="Aftersales & Service">
+                    <div class="service-info">
+                        <h3>Aftersales & Service</h3>
+                        <p>Expert care for your complete peace of mind.</p>
+                    </div>
+                    <div class="service-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=300&q=80" class="service-img" alt="Genuine Parts">
+                    <div class="service-info">
+                        <h3>Genuine Parts</h3>
+                        <p>Original parts for maximum reliability.</p>
+                    </div>
+                    <div class="service-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=300&q=80" class="service-img" alt="Finance Solutions">
+                    <div class="service-info">
+                        <h3>Finance Solutions</h3>
+                        <p>Flexible plans to make your dream car yours.</p>
+                    </div>
+                    <div class="service-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=300&q=80" class="service-img" alt="Trade-in">
+                    <div class="service-info">
+                        <h3>Trade-in</h3>
+                        <p>Exchange easily. Upgrade confidently.</p>
+                    </div>
+                    <div class="service-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Banner -->
+    <section class="help-banner">
+        <div class="container help-grid">
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&q=80" alt="Support" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+                <div>
+                    <h2 style="font-size: 1.8rem; color: var(--bg-dark); margin-bottom: 5px;">We are here to help<span style="color: var(--primary-color);">.</span></h2>
+                    <p style="color: var(--text-light);">Talk to our experts and let us put you in the driver's seat.</p>
+                </div>
+            </div>
+            <div class="help-contact-grid">
+                <div class="help-item">
+                    <i class="far fa-comments"></i>
+                    <div>
+                        <h4>Chat with Us Live</h4>
+                        <p>Instant support</p>
+                    </div>
+                </div>
+                <div class="help-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <div>
+                        <h4>Book a Test Drive</h4>
+                        <p>Choose your preferred time</p>
+                    </div>
+                </div>
+                <div class="help-item">
+                    <i class="far fa-file-alt"></i>
+                    <div>
+                        <h4>Request a Quote</h4>
+                        <p>Get a personalized offer</p>
+                    </div>
+                </div>
+                <div class="help-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <h4>0700 COSCHARIS</h4>
+                        <p>(0700 267 2427)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted Partnerships -->
+    <div class="partnerships container">
+        <h4>Trusted Partnerships. Global Standards.</h4>
+        <div class="partner-logos">
+            <i class="fas fa-car"></i>
+            <i class="fas fa-truck"></i>
+            <i class="fas fa-car-side"></i>
+            <i class="fas fa-truck-pickup"></i>
+            <i class="fab fa-foursquare"></i>
+            <i class="fas fa-car-alt"></i>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 20px;">
+                        <img src="images/logo-placeholder.png" alt="Coscharis Group" style="width: 40px; height: 40px; background: #e32636; border-radius: 50%;" onerror="this.style.display='none'">
+                        <span class="logo-text" style="color: var(--white);">COSCHARIS GROUP</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 10px;">Km 32, Lekki - Epe Expressway,<br>Awoyaya, Lagos, Nigeria.</p>
+                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Opening Hours:<br>Mon - Fri: 8:00 AM - 5:30 PM<br>Sat: 9:00 AM - 1:00 PM</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Our Companies</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">News & Insights</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Investor Relations</h4>
+                    <ul>
+                        <li><a href="#">Investor Overview</a></li>
+                        <li><a href="#">Financial Information</a></li>
+                        <li><a href="#">Reports & Presentations</a></li>
+                        <li><a href="#">Corporate Governance</a></li>
+                        <li><a href="#">Shareholder Information</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Stay Connected</h4>
+                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 20px;">Follow us for the latest updates and announcements.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>Coscharis Group &copy; 2025</div>
+                <div class="footer-bottom-links">
+                    <a href="#">Corporate Information</a> |
+                    <a href="#">Privacy Statement</a> |
+                    <a href="#">Terms & Conditions</a> |
+                    <a href="#">Legal Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

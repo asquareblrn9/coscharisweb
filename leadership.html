@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadership | Coscharis Group</title>
+    <meta name="description" content="Group Executive Management of Coscharis Group.">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .leadership-hero {
+            position: relative;
+            height: 60vh;
+            min-height: 450px;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            background-size: cover;
+            background-position: center;
+        }
+        .leadership-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(11, 19, 43, 0.9) 0%, rgba(11, 19, 43, 0.4) 100%);
+        }
+        
+        .founder-highlight {
+            background-color: var(--bg-dark);
+            color: var(--white);
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+            border-radius: 8px;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .founder-highlight-img {
+            width: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        .founder-highlight-text h5 {
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+        .founder-highlight-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        .founder-highlight-text p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+        .founder-stats {
+            display: flex;
+            gap: 20px;
+        }
+        .founder-stat h4 {
+            color: #d4af37;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        .founder-stat p {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.7);
+        }
+        .founder-bullets {
+            list-style: none;
+        }
+        .founder-bullets li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.9);
+        }
+        .founder-bullets li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #d4af37;
+        }
+
+        .exec-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .exec-card {
+            text-align: center;
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .exec-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        .exec-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            object-position: top;
+            background-color: #f0f0f0;
+        }
+        .exec-info {
+            padding: 20px 15px;
+        }
+        .exec-info h3 {
+            font-size: 1.1rem;
+            color: var(--bg-dark);
+            margin-bottom: 5px;
+        }
+        .exec-info p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .philosophy-section {
+            background-color: var(--bg-dark);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+        .philosophy-section h5 {
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        .philosophy-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+        .philosophy-values {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+        }
+        .philosophy-value i {
+            font-size: 2.5rem;
+            color: #d4af37;
+            margin-bottom: 20px;
+            display: inline-block;
+            padding: 20px;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        .philosophy-value h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        .philosophy-value p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .bottom-stats {
+            padding: 50px 0;
+            background-color: var(--white);
+            border-bottom: 1px solid #eaeaea;
+        }
+        .bottom-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+        .bottom-stat-item i {
+            font-size: 2rem;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+        .bottom-stat-item h4 {
+            font-size: 1.2rem;
+            color: var(--bg-dark);
+            margin-bottom: 5px;
+        }
+        .bottom-stat-item p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-links">
+                <a href="#">...Value for Money</a>
+            </div>
+            <div class="top-bar-links">
+                <a href="#">Media Centre</a> |
+                <a href="#">Investor Relations</a> |
+                <a href="#">Careers</a> |
+                <a href="#">Contact Us</a>
+                <div class="social-icons" style="display:inline-flex; align-items:center; margin-left: 10px;">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo-placeholder.png" alt="Coscharis Group" style="width: 40px; height: 40px; background: #e32636; border-radius: 50%;" onerror="this.style.display='none'">
+                <span class="logo-text">COSCHARIS GROUP</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us <i class="fas fa-chevron-down" style="font-size:0.7rem;"></i></a>
+                <a href="companies.html">Our Companies <i class="fas fa-chevron-down" style="font-size:0.7rem;"></i></a>
+                <a href="#">Sustainability</a>
+                <a href="#">Investors <i class="fas fa-chevron-down" style="font-size:0.7rem;"></i></a>
+                <a href="#">News & Insights <i class="fas fa-chevron-down" style="font-size:0.7rem;"></i></a>
+            </nav>
+            <div class="nav-actions">
+                <i class="fas fa-search search-icon"></i>
+                <a href="#" class="btn btn-primary">Contact Us <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="leadership-hero" style="background-image: url('../../.gemini/antigravity-ide/brain/839c7b08-da52-47f2-8ab0-a9095f960f6a/hero_building_1780299745497.png');">
+        <div class="container">
+            <div class="hero-content">
+                <h5 style="color: #d4af37; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; font-size: 0.9rem;">Leadership</h5>
+                <h1 class="hero-title">Group Executive<br>Management</h1>
+                <p class="hero-subtitle">A team of seasoned leaders driving Coscharis Group's vision of building a timeless institution and delivering exceptional value across Africa and beyond.</p>
+                <div style="display: flex; gap: 15px; margin-top: 30px;">
+                    <a href="#" class="btn btn-outline" style="border-color: #d4af37; color: #d4af37; background: rgba(212, 175, 55, 0.1);">View Corporate Governance <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="btn btn-outline">Explore Our Companies <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Highlight -->
+    <div class="container">
+        <div class="founder-highlight">
+            <div>
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&q=80" alt="Dr. Cosmas Maduka" class="founder-highlight-img">
+            </div>
+            <div class="founder-highlight-text">
+                <h5>Founder & President / CEO</h5>
+                <h2>Dr. Cosmas Maduka, CON</h2>
+                <p>Founder and President/CEO of Coscharis Group, Dr. Cosmas Maduka, CON, is the visionary leader whose entrepreneurial spirit, business acumen and unwavering commitment to excellence laid the foundation for one of Africa's most respected conglomerates.</p>
+                <div class="founder-stats">
+                    <div class="founder-stat">
+                        <h4>45+</h4>
+                        <p>Years of Leadership</p>
+                    </div>
+                    <div class="founder-stat">
+                        <h4>1977</h4>
+                        <p>Founded Coscharis Group</p>
+                    </div>
+                    <div class="founder-stat">
+                        <h4>Pan-African</h4>
+                        <p>Operations Across Multiple Sectors</p>
+                    </div>
+                    <div class="founder-stat">
+                        <h4>Global Partnerships</h4>
+                        <p>With World-Class Brands</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <ul class="founder-bullets">
+                    <li>Founder of Coscharis Group in 1977</li>
+                    <li>Built strategic partnerships with leading global brands including BMW, Rolls-Royce, Ford, Renault, Jaguar Land Rover and more</li>
+                    <li>Harvard Business School Executive Education Alumnus</li>
+                    <li>Commander of the Order of the Niger (CON), National Honour</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Executive Leadership Grid -->
+    <section class="section">
+        <div class="container">
+            <div style="text-align: center;">
+                <h5 style="color: #d4af37; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; font-size: 0.9rem;">Executive Leadership</h5>
+                <h2 style="font-size: 2.5rem; color: var(--bg-dark);">The Minds Driving Our Success</h2>
+            </div>
+            
+            <div class="exec-grid">
+                <!-- 1 -->
+                <div class="exec-card">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" alt="Dr. Cosmas Maduka" class="exec-img">
+                    <div class="exec-info">
+                        <h3>Dr. Cosmas Maduka</h3>
+                        <p>President / CEO</p>
+                    </div>
+                </div>
+                <!-- 2 -->
+                <div class="exec-card">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80" alt="Mr. Josiah Samuel" class="exec-img">
+                    <div class="exec-info">
+                        <h3>Mr. Josiah Samuel</h3>
+                        <p>Group Managing Director</p>
+                    </div>
+                </div>
+                <!-- 3 -->
+                <div class="exec-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Mr. Fred Amobi" class="exec-img">
+                    <div class="exec-info">
+                        <h3>Mr. Fred Amobi</h3>
+                        <p>Deputy Group Managing Director</p>
+                    </div>
+                </div>
+                <!-- 4 -->
+                <div class="exec-card">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80" alt="Mr. Cosmas Jr. Maduka" class="exec-img">
+                    <div class="exec-info">
+                        <h3>Mr. Cosmas Jr. Maduka</h3>
+                        <p>Executive Director, Special Duties</p>
+                    </div>
+                </div>
+                <!-- 5 -->
+                <div class="exec-card">
+                    <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=400&q=80" alt="Mr. Jonathan Maduka" class="exec-img">
+                    <div class="exec-info">
+                        <h3>Mr. Jonathan Maduka</h3>
+                        <p>Executive Director, Strategy</p>
+                    </div>
+                </div>
+                <!-- 6 -->
+                <div class="exec-card">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80" alt="Mr. Peter K. Maduka" class="exec-img">
+                    <div class="exec-info">
+                        <h3>Mr. Peter K. Maduka</h3>
+                        <p>General Manager, Auto Care</p>
+                    </div>
+                </div>
+                <!-- 7 -->
+                <div class="exec-card">
+                    <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=400&q=80" alt="Mr. Daniel Pinkrah" class="exec-img">
+                    <div class="exec-info">
+                        <h3>Mr. Daniel Pinkrah</h3>
+                        <p>Executive Director, Supply Chain</p>
+                    </div>
+                </div>
+                <!-- 8 -->
+                <div class="exec-card">
+                    <img src="https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?w=400&q=80" alt="Mr. Sunday Mukoro" class="exec-img">
+                    <div class="exec-info">
+                        <h3>Mr. Sunday Mukoro</h3>
+                        <p>Managing Director, Technologies</p>
+                    </div>
+                </div>
+                <!-- 9 -->
+                <div class="exec-card">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80" alt="Mr. C.C. Chigbue" class="exec-img">
+                    <div class="exec-info">
+                        <h3>Mr. C.C. Chigbue</h3>
+                        <p>General Manager / CEO, Mobility</p>
+                    </div>
+                </div>
+                <!-- 10 -->
+                <div class="exec-card">
+                    <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?w=400&q=80" alt="Mr. R.O. Agbasionwe" class="exec-img">
+                    <div class="exec-info">
+                        <h3>Mr. R.O. Agbasionwe</h3>
+                        <p>Managing Director, Ghana Ltd</p>
+                    </div>
+                </div>
+                <!-- 11 -->
+                <div class="exec-card">
+                    <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&q=80" alt="Mr. Abiona Babarinde" class="exec-img">
+                    <div class="exec-info">
+                        <h3>Mr. Abiona Babarinde</h3>
+                        <p>General Manager, Marketing</p>
+                    </div>
+                </div>
+                <!-- 12 -->
+                <div class="exec-card">
+                    <img src="https://images.unsplash.com/photo-1543132220-4bf5292c9e8c?w=400&q=80" alt="Mr. Ndubuisi Chito" class="exec-img">
+                    <div class="exec-info">
+                        <h3>Mr. Ndubuisi Chito</h3>
+                        <p>Company Secretary</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Philosophy -->
+    <section class="philosophy-section">
+        <div class="container">
+            <h5>Our Leadership Philosophy</h5>
+            <h2>Guided by Values. Focused on the Future.</h2>
+            <div class="philosophy-values">
+                <div class="philosophy-value">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Integrity</h4>
+                    <p>We uphold the highest ethical standards in all our dealings.</p>
+                </div>
+                <div class="philosophy-value">
+                    <i class="far fa-lightbulb"></i>
+                    <h4>Innovation</h4>
+                    <p>We embrace creativity and technology to drive growth.</p>
+                </div>
+                <div class="philosophy-value">
+                    <i class="fas fa-users"></i>
+                    <h4>People</h4>
+                    <p>We value our people and create opportunities.</p>
+                </div>
+                <div class="philosophy-value">
+                    <i class="fas fa-handshake"></i>
+                    <h4>Partnership</h4>
+                    <p>We build strong relationships with stakeholders.</p>
+                </div>
+                <div class="philosophy-value">
+                    <i class="fas fa-award"></i>
+                    <h4>Excellence</h4>
+                    <p>We are committed to delivering quality value.</p>
+                </div>
+                <div class="philosophy-value">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Sustainability</h4>
+                    <p>We are committed to responsible positive impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Stats -->
+    <div class="bottom-stats">
+        <div class="container">
+            <div class="bottom-stats-grid">
+                <div class="bottom-stat-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <h4>1977</h4>
+                    <p>Established</p>
+                </div>
+                <div class="bottom-stat-item">
+                    <i class="fas fa-building"></i>
+                    <h4>9+</h4>
+                    <p>Businesses</p>
+                </div>
+                <div class="bottom-stat-item">
+                    <i class="fas fa-globe-africa"></i>
+                    <h4>Pan-African</h4>
+                    <p>Presence</p>
+                </div>
+                <div class="bottom-stat-item">
+                    <i class="fas fa-handshake"></i>
+                    <h4>Global</h4>
+                    <p>Partnerships</p>
+                </div>
+                <div class="bottom-stat-item">
+                    <i class="fas fa-users"></i>
+                    <h4>Thousands</h4>
+                    <p>of Employees</p>
+                </div>
+                <div class="bottom-stat-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Millions</h4>
+                    <p>Customers Served</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 20px;">
+                        <img src="images/logo-placeholder.png" alt="Coscharis Group" style="width: 40px; height: 40px; background: #e32636; border-radius: 50%;" onerror="this.style.display='none'">
+                        <span class="logo-text" style="color: var(--white);">COSCHARIS GROUP</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 10px;">Km 32, Lekki - Epe Expressway,<br>Awoyaya, Lagos, Nigeria.</p>
+                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Opening Hours:<br>Mon - Fri: 8:00 AM - 5:30 PM<br>Sat: 9:00 AM - 1:00 PM</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Our Companies</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">News & Insights</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Investor Relations</h4>
+                    <ul>
+                        <li><a href="#">Investor Overview</a></li>
+                        <li><a href="#">Financial Information</a></li>
+                        <li><a href="#">Reports & Presentations</a></li>
+                        <li><a href="#">Corporate Governance</a></li>
+                        <li><a href="#">Shareholder Information</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Stay Connected</h4>
+                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 20px;">Follow us for the latest updates and announcements.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>Coscharis Group &copy; 2025</div>
+                <div class="footer-bottom-links">
+                    <a href="#">Corporate Information</a> |
+                    <a href="#">Privacy Statement</a> |
+                    <a href="#">Terms & Conditions</a> |
+                    <a href="#">Legal Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
