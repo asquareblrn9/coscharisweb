@@ -6,6 +6,8 @@ import {
   Building2,
   BusFront,
   Car,
+  ChevronLeft,
+  ChevronRight,
   Clock,
   Cpu,
   Cross,
@@ -260,6 +262,12 @@ const homeHeroFeatures = [
   { icon: 'users', value: 'Dedicated to', label: 'Customer Satisfaction' },
 ];
 
+const homeCarouselSlides = companies.map((company) => ({
+  title: company.name,
+  image: company.slug === 'motors' ? '/assets/generated-home-banner.png' : company.image,
+  description: company.description,
+}));
+
 function pageFromLocation() {
   const slug = window.location.pathname.replace(/^\/+/, '').replace(/\/+$/, '') || 'home';
   return pages.includes(slug) ? slug : 'home';
@@ -424,13 +432,13 @@ function Header({ page, navigate }) {
 function HomePage({ dark = false, navigate }) {
   return (
     <main>
-      <Hero
+      <HomeCarouselHero
         className={dark ? 'dark-hero' : ''}
-        image="/assets/generated-home-banner.png"
         title="Building Legacies. Creating Value."
         text="A diversified group committed to excellence, innovation and sustainable value across multiple sectors."
         actions={[['Discover More', 'about']]}
         features={homeHeroFeatures}
+        slides={homeCarouselSlides}
         navigate={navigate}
       />
       <section className="section" id="companies">
@@ -455,6 +463,73 @@ function HomePage({ dark = false, navigate }) {
       <NewsStrip />
       <Cta navigate={navigate} />
     </main>
+  );
+}
+
+function HomeCarouselHero({ title, text, actions = [], features = [], slides, navigate, className = '' }) {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % slides.length);
+    }, 4500);
+    return () => window.clearInterval(timer);
+  }, [slides.length]);
+
+  function moveSlide(direction) {
+    setActiveSlide((current) => (current + direction + slides.length) % slides.length);
+  }
+
+  return (
+    <section className={`hero carousel-hero ${features.length ? 'has-features' : ''} ${className}`}>
+      <div className="carousel-slides" aria-hidden="true">
+        {slides.map((slide, index) => (
+          <img
+            key={slide.title}
+            className={index === activeSlide ? 'active' : ''}
+            src={slide.image}
+            alt=""
+          />
+        ))}
+      </div>
+      <div className="container hero-content">
+        <span className="hero-eyebrow">{slides[activeSlide].title}</span>
+        <h1>{title}</h1>
+        {text && <p>{text}</p>}
+        <div className="hero-actions">
+          {actions.map(([label, slug], index) => (
+            <button
+              key={label}
+              className={index === 0 ? 'btn primary' : 'btn secondary'}
+              type="button"
+              onClick={() => navigate(slug)}
+            >
+              {label} -&gt;
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="carousel-controls" aria-label="Company image carousel controls">
+        <button type="button" aria-label="Previous company image" onClick={() => moveSlide(-1)}>
+          <ChevronLeft size={22} />
+        </button>
+        <div className="carousel-dots">
+          {slides.map((slide, index) => (
+            <button
+              key={slide.title}
+              type="button"
+              className={index === activeSlide ? 'active' : ''}
+              aria-label={`Show ${slide.title}`}
+              onClick={() => setActiveSlide(index)}
+            />
+          ))}
+        </div>
+        <button type="button" aria-label="Next company image" onClick={() => moveSlide(1)}>
+          <ChevronRight size={22} />
+        </button>
+      </div>
+      {features.length > 0 && <HeroFeatureStrip features={features} />}
+    </section>
   );
 }
 
@@ -748,7 +823,7 @@ function Hero({ image, eyebrow, title, text, actions = [], features = [], naviga
     <section
       className={`hero ${features.length ? 'has-features' : ''} ${className}`}
       style={{
-        backgroundImage: `linear-gradient(90deg, rgba(7,18,38,.84), rgba(7,18,38,.22)), url(${image})`,
+        backgroundImage: `linear-gradient(90deg, rgba(7,18,38,.76), rgba(7,18,38,.08)), url(${image})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',

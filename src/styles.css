@@ -215,16 +215,121 @@ button {
   color: var(--white);
 }
 
+.hero::before,
+.hero::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+}
+
+.hero::before {
+  background:
+    radial-gradient(circle at 72% 18%, rgba(255, 255, 255, 0.2), transparent 24%),
+    linear-gradient(118deg, transparent 0 28%, rgba(255, 255, 255, 0.18) 38%, transparent 50% 100%);
+  mix-blend-mode: screen;
+  opacity: 0.75;
+}
+
+.hero::after {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 42%, rgba(0, 0, 0, 0.1));
+}
+
 .hero.has-features {
   min-height: 760px;
   padding-bottom: 110px;
 }
+
+.carousel-hero {
+  background: var(--navy);
+}
+
+.carousel-slides {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.carousel-slides img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  filter: brightness(1.08) contrast(1.14) saturate(1.2);
+  transform: scale(1.03);
+  transition: opacity 900ms ease, transform 5200ms ease;
+}
+
+.carousel-slides img.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.carousel-hero::after {
+  background:
+    linear-gradient(90deg, rgba(7, 18, 38, 0.78), rgba(7, 18, 38, 0.18) 48%, rgba(7, 18, 38, 0.1)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 42%, rgba(0, 0, 0, 0.16));
+}
+
+.carousel-controls {
+  position: absolute;
+  bottom: 136px;
+  left: 50%;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transform: translateX(-50%);
+}
+
+.carousel-controls > button {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(7, 18, 38, 0.72);
+  color: var(--white);
+  backdrop-filter: blur(10px);
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 11px 13px;
+  background: rgba(7, 18, 38, 0.62);
+  backdrop-filter: blur(10px);
+}
+
+.carousel-dots button {
+  width: 9px;
+  height: 9px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.carousel-dots button.active {
+  width: 28px;
+  background: var(--red);
+}
+
 .hero.dark-hero {
   min-height: 680px;
 }
 
 .hero-content {
+  position: relative;
+  z-index: 2;
   padding: 96px 0;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.38);
 }
 
 .hero-eyebrow,
@@ -276,6 +381,7 @@ button {
   right: 0;
   bottom: 28px;
   left: 0;
+  z-index: 3;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   overflow: hidden;
@@ -359,6 +465,7 @@ button {
 }
 
 .company-card {
+  position: relative;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -367,6 +474,23 @@ button {
   color: inherit;
   text-align: left;
   transition: 160ms ease;
+}
+
+.company-card::before,
+.news-card::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  height: 190px;
+  pointer-events: none;
+  background:
+    linear-gradient(112deg, transparent 0 24%, rgba(255, 255, 255, 0.35) 38%, transparent 52%),
+    radial-gradient(circle at 78% 14%, rgba(255, 255, 255, 0.22), transparent 28%);
+  mix-blend-mode: screen;
+  content: "";
+  opacity: 0.85;
 }
 
 .company-card:hover {
@@ -379,11 +503,14 @@ button {
   display: block;
   width: 100%;
   height: 190px;
+  filter: brightness(1.08) contrast(1.12) saturate(1.18);
   object-fit: cover;
 }
 
 .company-card-body {
   display: grid;
+  position: relative;
+  z-index: 2;
   grid-template-columns: 62px 1fr;
   gap: 18px;
   padding: 24px;
@@ -535,12 +662,15 @@ button {
 }
 
 .news-card {
+  position: relative;
   overflow: hidden;
 }
 
 .news-card span,
 .news-card h3,
 .news-card button {
+  position: relative;
+  z-index: 2;
   margin-left: 22px;
   margin-right: 22px;
 }
@@ -761,6 +891,7 @@ textarea {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 8px;
+  filter: brightness(1.06) contrast(1.08) saturate(1.12);
 }
 
 .footer {
@@ -883,14 +1014,18 @@ textarea {
   .stat-row {
     grid-template-columns: repeat(2, 1fr);
   }
-.hero-feature-strip {
-  grid-template-columns: repeat(3, 1fr);
-}
+  .hero-feature-strip {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
-.hero.has-features {
-  min-height: 840px;
-  padding-bottom: 220px;
-}
+  .hero.has-features {
+    min-height: 840px;
+    padding-bottom: 220px;
+  }
+
+  .carousel-controls {
+    bottom: 266px;
+  }
 }
 
 @media (max-width: 720px) {
@@ -939,13 +1074,30 @@ textarea {
                                                                                                                                   margin-bottom: 28px;
                                                                                                                                 }
                                                                 
-                                                                                                                                .hero.has-features {
-                                                                                                                                  display: block;
-                                                                                                                                  min-height: auto;
-                                                                                                                                  padding-bottom: 0;
-                                                                                                                                }
-                                                                
-                                                                                                                                .hero-feature-strip article {
+  .hero.has-features {
+    display: block;
+    min-height: auto;
+    padding-bottom: 0;
+  }
+
+  .carousel-hero {
+    min-height: 760px;
+  }
+
+  .carousel-controls {
+    right: 14px;
+    bottom: 178px;
+    left: 14px;
+    justify-content: center;
+    transform: none;
+  }
+
+  .carousel-dots {
+    max-width: calc(100vw - 128px);
+    overflow-x: auto;
+  }
+
+  .hero-feature-strip article {
                                                                                                                                   min-height: 72px;
                                                                                                                                   border-right: 0;
                                                                                                                                   border-bottom: 1px solid rgba(255, 255, 255, 0.16);
