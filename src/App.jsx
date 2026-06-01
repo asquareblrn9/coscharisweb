@@ -251,6 +251,15 @@ const news = [
   ['May 05, 2025', 'Coscharis Farms Expands Operations for Food Security', '/assets/generated-farms.png'],
 ];
 
+const homeHeroFeatures = [
+  { icon: 'automotive', value: '7', label: 'World-Class Brands' },
+  { icon: 'map', value: 'Nationwide', label: 'Dealerships' },
+  { icon: 'building', value: 'State-of-the-Art', label: 'Showrooms' },
+  { icon: 'wrench', value: 'Premium Aftersales', label: '& Services' },
+  { icon: 'shield', value: 'Genuine Parts', label: '& Accessories' },
+  { icon: 'users', value: 'Dedicated to', label: 'Customer Satisfaction' },
+];
+
 function pageFromLocation() {
   const slug = window.location.pathname.replace(/^\/+/, '').replace(/\/+$/, '') || 'home';
   return pages.includes(slug) ? slug : 'home';
@@ -386,9 +395,7 @@ function Header({ page, navigate }) {
         <div className="container header-inner">
           <a href="/" className="brand">
             <img
-              src="/assets/logonew1.svg"
-              width="120"
-              height="40"
+              src="/assets/logonew1.png"
               alt="Coscharis Group"
             />
           </a>
@@ -419,10 +426,11 @@ function HomePage({ dark = false, navigate }) {
     <main>
       <Hero
         className={dark ? 'dark-hero' : ''}
-        image="/assets/generated-group-hero.png"
+        image="/assets/generated-home-banner.png"
         title="Building Legacies. Creating Value."
         text="A diversified group committed to excellence, innovation and sustainable value across multiple sectors."
         actions={[['Discover More', 'about']]}
+        features={homeHeroFeatures}
         navigate={navigate}
       />
       <section className="section" id="companies">
@@ -735,9 +743,9 @@ function ContactLine({ icon, title, children }) {
   );
 }
 
-function Hero({ image, eyebrow, title, text, actions = [], navigate = () => {}, className = '' }) {
+function Hero({ image, eyebrow, title, text, actions = [], features = [], navigate = () => { }, className = '' }) {
   return (
-    <section className={`hero ${className}`} style={{ backgroundImage: `linear-gradient(90deg, rgba(7,18,38,.84), rgba(7,18,38,.22)), url(${image})` }}>
+    <section className={`hero ${features.length ? 'has-features' : ''} ${className}`} style={{ backgroundImage: `linear-gradient(90deg, rgba(7,18,38,.84), rgba(7,18,38,.22)), url(${image})` }}>
       <div className="container hero-content">
         {eyebrow && <span className="hero-eyebrow">{eyebrow}</span>}
         <h1>{title}</h1>
@@ -750,7 +758,27 @@ function Hero({ image, eyebrow, title, text, actions = [], navigate = () => {}, 
           ))}
         </div>
       </div>
+      {features.length > 0 && <HeroFeatureStrip features={features} />}
     </section>
+  );
+}
+
+function HeroFeatureStrip({ features }) {
+  return (
+    <div className="container hero-feature-strip" aria-label="Homepage highlights">
+      {features.map((feature) => {
+        const Icon = iconMap[feature.icon] || Target;
+        return (
+          <article key={`${feature.value}-${feature.label}`}>
+            <Icon size={34} strokeWidth={1.8} />
+            <div>
+              <strong>{feature.value}</strong>
+              <span>{feature.label}</span>
+            </div>
+          </article>
+        );
+      })}
+    </div>
   );
 }
 
@@ -851,7 +879,7 @@ function Footer({ navigate }) {
       <div className="container footer-grid">
         <div>
           <button className="brand footer-brand" type="button" onClick={() => navigate('home')}>
-            <img src="/assets/logonew1.svg" alt="Coscharis Group" />
+            <img src="/assets/logonew1.png" alt="Coscharis Group" />
           </button>
           <p>Km 32, Lekki - Epe Expressway, Awoyaya, Lagos, Nigeria.</p>
           <p><strong>Opening Hours:</strong><br />Mon - Fri: 8:30 AM - 5:30 PM<br />Sat: 9:00 AM - 1:00 PM</p>

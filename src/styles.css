@@ -106,18 +106,19 @@ button {
   min-height: 92px;
 }
 
+
 .brand {
   display: inline-flex;
   align-items: center;
   color: var(--navy);
-  font-weight: 900;
+  font-weight: 100;
   letter-spacing: 0.02em;
   white-space: nowrap;
 }
 
 .brand img {
   display: block;
-  width: clamp(210px, 23vw, 330px);
+  width: clamp(50px, 23vw, 150px);
   height: auto;
 }
 
@@ -214,6 +215,10 @@ button {
   color: var(--white);
 }
 
+.hero.has-features {
+  min-height: 760px;
+  padding-bottom: 110px;
+}
 .hero.dark-hero {
   min-height: 680px;
 }
@@ -266,6 +271,57 @@ button {
   margin-top: 34px;
 }
 
+.hero-feature-strip {
+  position: absolute;
+  right: 0;
+  bottom: 28px;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 22px;
+  background: rgba(7, 18, 38, 0.92);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(14px);
+}
+
+.hero-feature-strip article {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 14px;
+  align-items: center;
+  min-height: 86px;
+  padding: 18px 22px;
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.hero-feature-strip article:last-child {
+  border-right: 0;
+}
+
+.hero-feature-strip svg {
+  color: var(--red);
+}
+
+.hero-feature-strip strong,
+.hero-feature-strip span {
+  display: block;
+  color: var(--white);
+  line-height: 1.25;
+}
+
+.hero-feature-strip strong {
+  font-size: 0.98rem;
+  font-weight: 900;
+}
+
+.hero-feature-strip span {
+  margin-top: 3px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  opacity: 0.9;
+}
 .section {
   padding: 86px 0;
 }
@@ -827,6 +883,14 @@ textarea {
   .stat-row {
     grid-template-columns: repeat(2, 1fr);
   }
+.hero-feature-strip {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.hero.has-features {
+  min-height: 840px;
+  padding-bottom: 220px;
+}
 }
 
 @media (max-width: 720px) {
@@ -867,6 +931,25 @@ textarea {
     grid-template-columns: 1fr;
   }
 
+                                                                                                                                .hero-feature-strip {
+                                                                                                                                  position: relative;
+                                                                                                                                  bottom: auto;
+                                                                                                                                  grid-template-columns: 1fr;
+                                                                                                                                  margin-top: -90px;
+                                                                                                                                  margin-bottom: 28px;
+                                                                                                                                }
+                                                                
+                                                                                                                                .hero.has-features {
+                                                                                                                                  display: block;
+                                                                                                                                  min-height: auto;
+                                                                                                                                  padding-bottom: 0;
+                                                                                                                                }
+                                                                
+                                                                                                                                .hero-feature-strip article {
+                                                                                                                                  min-height: 72px;
+                                                                                                                                  border-right: 0;
+                                                                                                                                  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+                                                                                                                                }
   .cta,
   .cta div,
   .news-head {
