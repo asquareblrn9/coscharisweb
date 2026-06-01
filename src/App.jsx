@@ -745,14 +745,28 @@ function ContactLine({ icon, title, children }) {
 
 function Hero({ image, eyebrow, title, text, actions = [], features = [], navigate = () => { }, className = '' }) {
   return (
-    <section className={`hero ${features.length ? 'has-features' : ''} ${className}`} style={{ backgroundImage: `linear-gradient(90deg, rgba(7,18,38,.84), rgba(7,18,38,.22)), url(${image})` }}>
+    <section
+      className={`hero ${features.length ? 'has-features' : ''} ${className}`}
+      style={{
+        backgroundImage: `linear-gradient(90deg, rgba(7,18,38,.84), rgba(7,18,38,.22)), url(${image})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+
+      }}
+    >
       <div className="container hero-content">
         {eyebrow && <span className="hero-eyebrow">{eyebrow}</span>}
         <h1>{title}</h1>
         {text && <p>{text}</p>}
         <div className="hero-actions">
           {actions.map(([label, slug], index) => (
-            <button key={label} className={index === 0 ? 'btn primary' : 'btn secondary'} type="button" onClick={() => navigate(slug)}>
+            <button
+              key={label}
+              className={index === 0 ? 'btn primary' : 'btn secondary'}
+              type="button"
+              onClick={() => navigate(slug)}
+            >
               {label} -&gt;
             </button>
           ))}
